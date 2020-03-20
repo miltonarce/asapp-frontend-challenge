@@ -1,5 +1,10 @@
-body{
-  h1{
-    color: red;
-  }
-}
+//generic base styles
+@import "base/colors";
+@import "base/fonts";
+@import "base/variables";
+@import "base/reset";
+
+//Components
+@import "components/spinner.scss";
+//Views
+@import "views/home.scss";

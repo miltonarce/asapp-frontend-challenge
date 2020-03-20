@@ -1,5 +1,12 @@
 import React from "react";
+import Home from "./views/Home";
+import Footer from "./components/Footer";
 
-const App = () => <h1>HOLAAA</h1>;
+const App = () => (
+  <>
+    <Home />
+    <Footer />
+  </>
+);
 
 export default App;

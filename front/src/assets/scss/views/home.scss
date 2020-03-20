@@ -1,0 +1,9 @@
+.container {
+  width: 100%;
+  &__container-title {
+    h1 {
+      color: $color-primary;
+      text-align: center;
+    }
+  }
+}
