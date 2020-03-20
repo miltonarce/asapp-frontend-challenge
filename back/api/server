@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+const fastify = require('fastify')({
+  logger: { level: 'info' },
+});
+const data = require('./data.json');
+const randomInt = require('random-int');
+const open = require('open');
+const preferredCities = new Set();
+
+const flag = name =>
+  name in process.env &&
+  ['1', 'yes', 'true'].includes(process.env[name].trim().toLowerCase());
+
+const excludeFromSimulation = req => req.raw.url.startsWith('/help');
+
+data.sort(({ name: nameA }, { name: nameB }) =>
+  nameA.toLowerCase().localeCompare(nameB.toLowerCase())
+);
+
+fastify.register(require('fastify-cors'));
+
+// These are simulations for cases where the API is slow to respond or fails
+if (!flag('NO_SLOWDOWN')) {
+  fastify.addHook('onRequest', (req, res, next) => {
+    if (excludeFromSimulation(req)) {
+      next();
+    } else {
+      setTimeout(() => next(), randomInt(0, 4000));
+    }
+  });
+}
+
+if (!flag('NO_FAILURE')) {
+  fastify.addHook('onRequest', async req => {
+    if (!excludeFromSimulation(req) && randomInt(0, 10) === 5) {
+      throw new Error('There is a glitch in the Matrix!');
+    }
+  });
+}
+
+fastify.register(require('./cities'), { prefix: '/cities', data });
+fastify.register(require('./preferences'), {
+  prefix: '/preferences',
+  preferredCities,
+});
+fastify.register(require('./help'), { prefix: '/help' });
+
+(async () => {
+  await fastify.listen(3030);
+  if (!flag('NO_BROWSER_HELP')) {
+    await open('http://localhost:3030/help');
+  }
+})();
