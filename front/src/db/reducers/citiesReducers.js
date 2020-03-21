@@ -5,10 +5,10 @@ import {
   GET_FILTER_CITIES_START,
   GET_FILTER_CITIES_SUCCESS,
   GET_FILTER_CITIES_ERROR
-} from "./types";
+} from "../types";
 
 const initialState = {
-  cities: [],
+  data: [],
   loading: false,
   message: ""
 };
@@ -25,7 +25,7 @@ const citiesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        cities: action.payload.cities
+        data: action.payload.cities
       };
     }
     case GET_CITIES_ERROR: {
@@ -45,7 +45,7 @@ const citiesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        cities: action.payload.cities
+        data: action.payload.cities
       };
     }
     case GET_FILTER_CITIES_ERROR: {

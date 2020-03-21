@@ -24,6 +24,8 @@ module.exports = {
     quotes: ["error", "double"],
     "comma-dangle": ["error", "never"],
     "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
-    "arrow-parens": ["error", "as-needed"]
+    "arrow-parens": ["error", "as-needed"],
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0
   }
 };

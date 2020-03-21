@@ -1,15 +1,24 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import debounce from "lodash.debounce";
-import { getCities, getCitiesByFilter } from "../../db/creators";
+import {
+  getCities,
+  getCitiesByFilter,
+  getPreferedCities,
+  setPreferedCity
+} from "../../db/creators";
 import Spinner from "../Spinner";
 
 const Cities = () => {
   const dispatch = useDispatch();
-  const { cities, loading } = useSelector(state => state.data);
+  const { cities, preferedCities } = useSelector(state => {
+    console.log(state);
+    return state;
+  });
 
   useEffect(() => {
     dispatch(getCities());
+    dispatch(getPreferedCities());
   }, []);
 
   const delayedSearch = useRef(
@@ -20,6 +29,27 @@ const Cities = () => {
 
   const searchCities = e => {
     delayedSearch(e.target.value);
+  };
+
+  const selectCity = async city => {
+    const { geonameid, name } = city;
+    const selectedCity = preferedCities.data.find(e => e === geonameid);
+
+    if (selectedCity) {
+      dispatch(
+        setPreferedCity({
+          [geonameid]: false,
+          name
+        })
+      );
+    } else {
+      dispatch(
+        setPreferedCity({
+          [geonameid]: true,
+          name
+        })
+      );
+    }
   };
 
   return (
@@ -33,14 +63,16 @@ const Cities = () => {
             onChange={searchCities}
           />
         </div>
-        {loading ? (
+        {cities.loading ? (
           <Spinner />
         ) : (
           <>
             <div>
               <ul>
-                {cities.map(c => (
-                  <li key={c.geonameid}>{c.name}</li>
+                {cities.data.map(c => (
+                  <li key={c.geonameid} onClick={() => selectCity(c)}>
+                    {c.name}
+                  </li>
                 ))}
               </ul>
             </div>

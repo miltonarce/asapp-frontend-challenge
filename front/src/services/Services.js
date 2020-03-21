@@ -10,6 +10,8 @@ const axiosInstance = axios.create({
 export default {
   cities: {
     fetch: () => axiosInstance.get("/cities?offset=0&limit=10"),
-    fetchByFilter: value => axiosInstance.get(`/cities?filter=${value}`)
+    fetchByFilter: value => axiosInstance.get(`/cities?filter=${value}`),
+    fetchPreferences: () => axiosInstance.get("/preferences/cities"),
+    selectCity: city => axiosInstance.patch("/preferences/cities", city)
   }
 };
