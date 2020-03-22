@@ -26,7 +26,7 @@ Attention: If you can't run the backend api, you can go to the back folder `cd b
 
 - When there are no city matches you will find the following picture:
 
-![imagen1]([https://i.ibb.co/2WSZcjg/Screen-Shot-2020-03-22-at-17-49-05.png](https://i.ibb.co/2WSZcjg/Screen-Shot-2020-03-22-at-17-49-05.png)
+![](https://i.ibb.co/2WSZcjg/Screen-Shot-2020-03-22-at-17-49-05.png)
 
 # FUNCTIONALITY
 
