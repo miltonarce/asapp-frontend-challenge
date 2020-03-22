@@ -1,17 +1,18 @@
 .filter-box {
-  h2 {
-    color: $color-primary-hover;
-    margin-bottom: 0.5rem;
-    font-size: 1.4rem;
-    font-weight: 300;
-  }
   &__items {
     &__search {
+      label {
+        color: $color-primary-hover;
+        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+        font-weight: 300;
+        display: inline-block;
+      }
       .icon {
         width: 2rem;
         position: absolute;
-        margin-top: 1rem;
-        margin-left: 1rem;
+        margin-top: 3.4rem;
+        margin-left: -4.7rem;
       }
       input {
         border: 2px solid $color-primary;

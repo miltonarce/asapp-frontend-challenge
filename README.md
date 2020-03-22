@@ -40,7 +40,6 @@ Attention: If you can't run the backend api, you can go to the back folder `cd b
 - I used the next:
 
   > React
-<<<<<<< HEAD
 
   > Redux / Redux-Thunk
 
@@ -50,15 +49,4 @@ Attention: If you can't run the backend api, you can go to the back folder `cd b
 
   > SASS / BEM
 
-=======
-  
-  > Redux / Redux-Thunk
-  
-  > Webpack
-  
-  > Axios
-  
-  > SASS / BEM
-  
->>>>>>> fd4149b427d88a3350a4f441e168f032ee5c443a
   > Lodash / Debounce

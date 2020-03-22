@@ -72,8 +72,10 @@ const Cities = () => {
     <div className="filter-box">
       <div className="filter-box__items">
         <div className="filter-box__items__search">
+          <label htmlFor="filterCity">To Select</label>
           <img className="icon" src={FunnelIcon} alt="funnel icon" />
           <input
+            id="filterCity"
             type="text"
             placeholder="Type to filter by city name or country"
             onChange={searchCities}
