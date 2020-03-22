@@ -38,9 +38,15 @@ Attention: If you can't run the backend api, you can go to the back folder `cd b
 # MAIN TECHNOLOGIES AND LIBRARIES
 
 - I used the next:
+
   > React
+
   > Redux / Redux-Thunk
+
   > Webpack
+
   > Axios
+
   > SASS / BEM
+
   > Lodash / Debounce
