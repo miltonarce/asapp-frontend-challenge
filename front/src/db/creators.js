@@ -68,8 +68,11 @@ export const getFilterCitiesError = message => ({
   }
 });
 
-export const setCityStart = () => ({
-  type: SET_PREFERED_CITY_START
+export const setCityStart = id => ({
+  type: SET_PREFERED_CITY_START,
+  payload: {
+    id
+  }
 });
 
 export const setCitySuccess = lastSelected => ({
@@ -131,7 +134,7 @@ export const getPreferedCities = () => async dispatch => {
 };
 
 export const setPreferedCity = city => async dispatch => {
-  dispatch(setCityStart());
+  dispatch(setCityStart(city.geonameid));
   try {
     const { status, statusText } = await Api.cities.selectCity(city);
     if (status === 204) {

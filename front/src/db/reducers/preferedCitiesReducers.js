@@ -11,6 +11,7 @@ const initialState = {
   data: [],
   loading: false,
   message: "",
+  id: "",
   lastSelected: ""
 };
 
@@ -39,13 +40,13 @@ const preferedCitiesReducer = (state = initialState, action) => {
     case SET_PREFERED_CITY_START: {
       return {
         ...state,
+        id: action.payload.id,
         loading: true
       };
     }
     case SET_PREFERED_CITY_SUCCESS: {
       return {
         ...state,
-        loading: false,
         lastSelected: action.payload.lastSelected
       };
     }

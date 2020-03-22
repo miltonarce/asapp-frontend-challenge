@@ -1,0 +1,30 @@
+.filter-box {
+  h2 {
+    color: $color-primary-hover;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+  &__items {
+    &__search {
+      .icon {
+        width: 2rem;
+        position: absolute;
+        margin-top: 1rem;
+        margin-left: 1rem;
+      }
+      input {
+        border: 2px solid $color-primary;
+        border-radius: 4px;
+        width: -webkit-fill-available;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        padding-left: 4rem;
+        font-size: 1.4rem;
+      }
+      input:focus {
+        outline: none;
+      }
+    }
+  }
+}

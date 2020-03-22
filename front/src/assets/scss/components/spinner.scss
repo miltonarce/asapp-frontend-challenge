@@ -1,9 +1,9 @@
 .loader {
   font-size: 10px;
-  margin: 50px auto;
+  margin: 120px auto;
   text-indent: -9999em;
-  width: 11em;
-  height: 11em;
+  width: 5em;
+  height: 5em;
   border-radius: 50%;
   background: #006fff;
   background: -moz-linear-gradient(left, #006fff 10%, rgba(0, 111, 255, 0) 42%);
@@ -63,5 +63,19 @@
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+.label-chip {
+  .loader {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    margin: unset;
+    margin-left: 1rem;
+    vertical-align: middle;
+  }
+  .loader:after {
+    background: $color-light-gray;
   }
 }

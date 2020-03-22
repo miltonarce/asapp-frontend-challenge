@@ -3,10 +3,10 @@ import Cities from "../../components/Cities";
 
 const Home = () => (
   <main className="container">
-    <section className="container--title">
+    <section className="container__title">
       <h1>Select your favorite cities</h1>
     </section>
-    <section className="container-main">
+    <section className="container__main">
       <Cities />
     </section>
   </main>
