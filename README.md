@@ -12,6 +12,8 @@ By Milton Arce
 
 > npm start
 
+Attention: If you can't run the backend api, you can go to the back folder `cd back`, and then run `npx -p ./api server`.
+
 ## UI-UX IMPROVEMENTS
 
 ![imagen1](https://ibb.co/PCj4PPD[https://i.ibb.co/VB9Dzzw/Screen-Shot-2020-03-22-at-17-11-07.png](https://i.ibb.co/VB9Dzzw/Screen-Shot-2020-03-22-at-17-11-07.png)
