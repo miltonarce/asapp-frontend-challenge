@@ -16,7 +16,7 @@ Attention: If you can't run the backend api, you can go to the back folder `cd b
 
 ## UI-UX IMPROVEMENTS
 
-![imagen1](https://ibb.co/PCj4PPD[https://i.ibb.co/VB9Dzzw/Screen-Shot-2020-03-22-at-17-11-07.png](https://i.ibb.co/VB9Dzzw/Screen-Shot-2020-03-22-at-17-11-07.png)
+![](https://i.ibb.co/VB9Dzzw/Screen-Shot-2020-03-22-at-17-11-07.png)
 
 - Colors and Iconography were added to improve the users interface, also i added loader icons like spinner to wait for the request.
 
@@ -26,7 +26,7 @@ Attention: If you can't run the backend api, you can go to the back folder `cd b
 
 - When there are no city matches you will find the following picture:
 
-![imagen1]([https://i.ibb.co/2WSZcjg/Screen-Shot-2020-03-22-at-17-49-05.png](https://i.ibb.co/2WSZcjg/Screen-Shot-2020-03-22-at-17-49-05.png)
+![](https://i.ibb.co/2WSZcjg/Screen-Shot-2020-03-22-at-17-49-05.png)
 
 # FUNCTIONALITY
 

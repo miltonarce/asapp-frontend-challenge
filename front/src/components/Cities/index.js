@@ -63,6 +63,11 @@ const Cities = () => {
     dispatch(cleanErrorMessage());
   }
 
+  if (cities.message !== "") {
+    notify.show(cities.message, "error");
+    dispatch(cleanErrorMessage());
+  }
+
   return (
     <div className="filter-box">
       <div className="filter-box__items">
