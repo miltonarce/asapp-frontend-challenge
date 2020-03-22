@@ -1,5 +1,12 @@
 import React from "react";
 
-const Spinner = () => <div className="loader">Loading...</div>;
+const Spinner = () => (
+  <div className="lds-ring">
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+);
 
 export default Spinner;

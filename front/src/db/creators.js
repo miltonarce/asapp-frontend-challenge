@@ -10,7 +10,8 @@ import {
   GET_PREFERED_CITIES_ERROR,
   SET_PREFERED_CITY_START,
   SET_PREFERED_CITY_SUCCESS,
-  SET_PREFERED_CITY_ERROR
+  SET_PREFERED_CITY_ERROR,
+  CLEAN_ERROR_MESSAGE
 } from "./types";
 import Api from "../services/Services";
 
@@ -21,7 +22,9 @@ export const getCitiesStart = () => ({
 export const getCitiesSuccess = cities => ({
   type: GET_CITIES_SUCCESS,
   payload: {
-    cities
+    cities: cities.data,
+    nextLink: cities.links.next || "",
+    backLink: cities.links.prev || ""
   }
 });
 
@@ -57,7 +60,9 @@ export const getFilterCitiesStart = () => ({
 export const getFilterCitiesSuccess = cities => ({
   type: GET_FILTER_CITIES_SUCCESS,
   payload: {
-    cities
+    cities: cities.data,
+    nextLink: cities.links.next || "",
+    backLink: cities.links.prev || ""
   }
 });
 
@@ -89,17 +94,24 @@ export const setCityError = message => ({
   }
 });
 
-export const getCities = () => async dispatch => {
+export const cleanErrorMessage = () => ({
+  type: CLEAN_ERROR_MESSAGE,
+  payload: {
+    message: ""
+  }
+});
+
+export const getCities = link => async dispatch => {
   dispatch(getCitiesStart());
   try {
-    const { data, status, statusText } = await Api.cities.fetch();
+    const { data, status, statusText } = await Api.cities.fetch(link);
     if (status === 200) {
-      dispatch(getCitiesSuccess(data.data));
+      dispatch(getCitiesSuccess(data));
     } else {
       dispatch(getCitiesError(statusText));
     }
   } catch (err) {
-    dispatch(getCitiesError(err.toString()));
+    dispatch(getCitiesError("Something went wrong, please try again."));
   }
 };
 
@@ -110,12 +122,12 @@ export const getCitiesByFilter = filter => async dispatch => {
       filter.toString()
     );
     if (status === 200) {
-      dispatch(getFilterCitiesSuccess(data.data));
+      dispatch(getFilterCitiesSuccess(data));
     } else {
       dispatch(getFilterCitiesError(statusText));
     }
   } catch (err) {
-    dispatch(getFilterCitiesError(err.toString()));
+    dispatch(getFilterCitiesError("Something went wrong, please try again."));
   }
 };
 
@@ -129,7 +141,7 @@ export const getPreferedCities = () => async dispatch => {
       dispatch(getPreferedCitiesError(statusText));
     }
   } catch (err) {
-    dispatch(getPreferedCitiesError(err.toString()));
+    dispatch(getPreferedCitiesError("Something went wrong, please try again."));
   }
 };
 
@@ -144,6 +156,6 @@ export const setPreferedCity = city => async dispatch => {
       dispatch(setCityError(statusText));
     }
   } catch (err) {
-    dispatch(setCityError(err.toString()));
+    dispatch(setCityError("Something went wrong, please try again."));
   }
 };

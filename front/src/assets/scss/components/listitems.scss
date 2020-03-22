@@ -58,10 +58,17 @@
                 outline: none;
               }
             }
-            .loader {
+            .lds-ring {
               margin: 0;
               width: 3rem;
               height: 3rem;
+            }
+            .lds-ring div {
+              width: 3rem;
+              height: 3rem;
+              margin: 0;
+              border: 3px solid #0170fe;
+              border-color: #0170fe transparent transparent transparent;
             }
           }
           .elements {

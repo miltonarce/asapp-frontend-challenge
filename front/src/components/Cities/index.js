@@ -1,17 +1,20 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import debounce from "lodash.debounce";
+import Notifications, { notify } from "react-notify-toast";
 import {
   getCities,
   getCitiesByFilter,
   getPreferedCities,
-  setPreferedCity
+  setPreferedCity,
+  cleanErrorMessage
 } from "../../db/creators";
 import Spinner from "../Spinner";
 import ListItems from "../ListItems";
 import ListPreferedItems from "../ListPreferedItems";
 import FunnelIcon from "../../assets/icons/funnel-outline.svg";
 import BusinessIcon from "../../assets/icons/business-outline.svg";
+import Pager from "../Pager";
 
 const Cities = () => {
   const dispatch = useDispatch();
@@ -34,7 +37,7 @@ const Cities = () => {
 
   const selectCity = async city => {
     const { geonameid, name } = city;
-    const selectedCity = preferedCities.data.find(e => e === geonameid);
+    const selectedCity = preferedCities.data.includes(geonameid);
 
     if (selectedCity) {
       dispatch(
@@ -54,12 +57,12 @@ const Cities = () => {
       );
     }
   };
-  if (cities.message !== "") {
-    console.log("cities", cities.message);
-  }
+
   if (preferedCities.message !== "") {
-    console.log("prefer cities", preferedCities.message);
+    notify.show(preferedCities.message, "error");
+    dispatch(cleanErrorMessage());
   }
+
   return (
     <div className="filter-box">
       <div className="filter-box__items">
@@ -81,7 +84,7 @@ const Cities = () => {
                   actionEvent={selectCity}
                   dataList={cities.data.map(c => ({
                     ...c,
-                    active: preferedCities.data.find(e => e === c.geonameid)
+                    active: preferedCities.data.includes(c.geonameid)
                   }))}
                   loading={preferedCities.loading}
                   id={preferedCities.id}
@@ -91,11 +94,12 @@ const Cities = () => {
                   <picture>
                     <img src={BusinessIcon} alt="info message" />
                   </picture>
-                  <p>
-                    ups! we couldn&apos;t find the cities yet, please try again.
-                  </p>
+                  <p>ups! Sorry cities not found.</p>
                 </div>
               )}
+            </div>
+            <div className="filter-box__items__pager">
+              <Pager next={cities.nextLink} back={cities.backLink} />
             </div>
             <div className="filter-box__items__prefered">
               <ListPreferedItems
@@ -109,6 +113,7 @@ const Cities = () => {
           </div>
         )}
       </div>
+      <Notifications />
     </div>
   );
 };

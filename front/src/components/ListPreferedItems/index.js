@@ -34,7 +34,7 @@ ListPreferedItems.propTypes = {
   preferedList: PropTypes.arrayOf(PropTypes.number),
   actionEvent: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  id: PropTypes.string
+  id: PropTypes.any
 };
 
 export default ListPreferedItems;

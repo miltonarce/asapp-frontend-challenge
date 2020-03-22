@@ -4,13 +4,16 @@ import {
   GET_CITIES_ERROR,
   GET_FILTER_CITIES_START,
   GET_FILTER_CITIES_SUCCESS,
-  GET_FILTER_CITIES_ERROR
+  GET_FILTER_CITIES_ERROR,
+  CLEAN_ERROR_MESSAGE
 } from "../types";
 
 const initialState = {
   data: [],
   loading: false,
-  message: ""
+  message: "",
+  nextLink: "",
+  backLink: ""
 };
 
 const citiesReducer = (state = initialState, action) => {
@@ -25,7 +28,9 @@ const citiesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        data: action.payload.cities
+        data: action.payload.cities,
+        nextLink: action.payload.nextLink,
+        backLink: action.payload.backLink
       };
     }
     case GET_CITIES_ERROR: {
@@ -45,13 +50,21 @@ const citiesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        data: action.payload.cities
+        data: action.payload.cities,
+        nextLink: action.payload.nextLink,
+        backLink: action.payload.backLink
       };
     }
     case GET_FILTER_CITIES_ERROR: {
       return {
         ...state,
         loading: false,
+        message: action.payload.message
+      };
+    }
+    case CLEAN_ERROR_MESSAGE: {
+      return {
+        ...state,
         message: action.payload.message
       };
     }

@@ -40,7 +40,7 @@ ListItems.propTypes = {
   dataList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   actionEvent: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  id: PropTypes.string
+  id: PropTypes.any
 };
 
 export default ListItems;

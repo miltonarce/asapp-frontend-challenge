@@ -4,7 +4,8 @@ import {
   GET_PREFERED_CITIES_ERROR,
   SET_PREFERED_CITY_START,
   SET_PREFERED_CITY_SUCCESS,
-  SET_PREFERED_CITY_ERROR
+  SET_PREFERED_CITY_ERROR,
+  CLEAN_ERROR_MESSAGE
 } from "../types";
 
 const initialState = {
@@ -54,6 +55,12 @@ const preferedCitiesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        message: action.payload.message
+      };
+    }
+    case CLEAN_ERROR_MESSAGE: {
+      return {
+        ...state,
         message: action.payload.message
       };
     }

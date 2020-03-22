@@ -1,0 +1,17 @@
+.label-chip {
+  .lds-ring {
+    margin: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    margin-left: 1rem;
+    vertical-align: middle;
+  }
+  .lds-ring div {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0;
+    border: 1.5px solid #0170fe;
+    border-color: #0170fe transparent transparent transparent;
+  }
+}

@@ -1,81 +1,36 @@
-.loader {
-  font-size: 10px;
-  margin: 120px auto;
-  text-indent: -9999em;
-  width: 5em;
-  height: 5em;
-  border-radius: 50%;
-  background: #006fff;
-  background: -moz-linear-gradient(left, #006fff 10%, rgba(0, 111, 255, 0) 42%);
-  background: -webkit-linear-gradient(
-    left,
-    #006fff 10%,
-    rgba(0, 111, 255, 0) 42%
-  );
-  background: -o-linear-gradient(left, #006fff 10%, rgba(0, 111, 255, 0) 42%);
-  background: -ms-linear-gradient(left, #006fff 10%, rgba(0, 111, 255, 0) 42%);
-  background: linear-gradient(to right, #006fff 10%, rgba(0, 111, 255, 0) 42%);
+.lds-ring {
+  display: block;
   position: relative;
-  -webkit-animation: load3 1.4s infinite linear;
-  animation: load3 1.4s infinite linear;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
+  width: 80px;
+  height: 80px;
+  margin: 120px auto;
 }
-.loader:before {
-  width: 50%;
-  height: 50%;
-  background: #006fff;
-  border-radius: 100% 0 0 0;
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
   position: absolute;
-  top: 0;
-  left: 0;
-  content: "";
-}
-.loader:after {
-  background: #ffffff;
-  width: 75%;
-  height: 75%;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid $color-primary;
   border-radius: 50%;
-  content: "";
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: $color-primary transparent transparent transparent;
 }
-@-webkit-keyframes load3 {
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
-  }
-}
-@keyframes load3 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-.label-chip {
-  .loader {
-    width: 1.5rem;
-    height: 1.5rem;
-    display: inline-block;
-    margin: unset;
-    margin-left: 1rem;
-    vertical-align: middle;
-  }
-  .loader:after {
-    background: $color-light-gray;
   }
 }
