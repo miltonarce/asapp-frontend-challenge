@@ -12,6 +12,8 @@ By Milton Arce
 
 > npm start
 
+- The app will be ready in http://localhost:5000/
+
 Attention: If you can't run the backend api, you can go to the back folder `cd back`, and then run `npx -p ./api server`.
 
 ## UI-UX IMPROVEMENTS
